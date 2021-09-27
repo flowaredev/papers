@@ -66,6 +66,8 @@ The proposed scheme collects the coordinates of each anchor node and the distanc
 \end{figure}
 
 \subsection{Clustering method using the density of coordinates}
+Trilateration using 4 anchors gets multiple tag coordinates. However, as shown in Fig. \ref{fig1}, one of the two coordinates is far from the actual tag location. Therefore, if the clustering method using the density of coordinates proposed in this paper is used, it is possible to remove the coordinates of the tag that are far from the actual location of the tag. After that, the system can use the coordinates closest to the actual position of the tag to improve the accuracy of localization.
+
 When measuring the distance between anchor and tag indoors, there is an error in the distance. For example, if a tag is tracked with 4 anchors, an obstacle between the tag and the anchor may cause errors in more than 1 of the 4 anchors. The clustering scheme proposed in this paper can quickly remove these errors. The system finds the region with the highest density of the eight computed coordinates. First, the distance is calculated by combining two coordinates. As shown in equation \ref{eq2}, there are 28 pairs of calculated distances. The highest density of 8 tag coordinates calculated when trilateration is performed 4 times is found by the clustering scheme.
 
 \begin{equation}
