@@ -43,9 +43,9 @@ As labor costs become more expensive and industries become more complex, the num
 \section{System Architecture}
 
 \subsection{Multiple trilateration using four anchors}
-Trilateration requires at least three anchors. If any of the three anchors fail, localization will fail. There are several causes of anchor errors. For example, anchor failures occur when an obstacle is between the tag and the anchor, or when the anchor's power supply is faulty. These errors often occur indoors with many obstacles. The more frequently these errors occur, the more unstable the localization becomes. 
-Localization failure can be improved by adding one anchor. 
-Even if a problem occurs in any one anchor, the probability of performing localization increases.
+\textcolor{red}{Trilateration requires at least three anchors. If any of the three anchors fail, localization will fail. There are several causes of anchor errors. For example, anchor failures occur when an obstacle is between the tag and the anchor, or when the anchor's power supply is faulty. These errors often occur indoors with many obstacles. The more frequently these errors occur, the more unstable the localization becomes.
+Localization failure can be improved by adding one anchor.
+Even if a problem occurs in any one anchor, the probability of performing localization increases.}
 
 The proposed scheme collects the coordinates of each anchor node and the distance value between tag nodes. The system uses triangulation to calculate the coordinates of the tag node. Fig. As shown in Fig. \ref{fig1}, there are two coordinates that can be obtained through trilateration using three spheres. Since the number of anchor nodes is 4 (reference, Fig. \ref{fig2}), as shown in the equation \ref{eq1}, the number of coordinates that can be collected is 8.
 
@@ -66,9 +66,9 @@ The proposed scheme collects the coordinates of each anchor node and the distanc
 \end{figure}
 
 \subsection{Clustering method using the density of coordinates}
-Trilateration using 4 anchors gets multiple tag coordinates. However, as shown in Fig. \ref{fig1}, one of the two coordinates is far from the actual tag location. Therefore, if the clustering method using the density of coordinates proposed in this paper is used, it is possible to remove the coordinates of the tag that are far from the actual location of the tag. After that, the system can use the coordinates closest to the actual position of the tag to improve the accuracy of localization.
+\textcolor{red}{Trilateration using 4 anchors gets multiple tag coordinates. However, as shown in Fig. \ref{fig1}, one of the two coordinates is far from the actual tag location. Therefore, if the clustering method using the density of coordinates proposed in this paper is used, it is possible to remove the coordinates of the tag that are far from the actual location of the tag. After that, the system can use the coordinates closest to the actual position of the tag to improve the accuracy of localization.}
 
-When measuring the distance between anchor and tag indoors, there is an error in the distance. For example, if a tag is tracked with 4 anchors, an obstacle between the tag and the anchor may cause errors in more than 1 of the 4 anchors. The clustering scheme proposed in this paper can quickly remove these errors. The system finds the region with the highest density of the eight computed coordinates. First, the distance is calculated by combining two coordinates. As shown in equation \ref{eq2}, there are 28 pairs of calculated distances. The highest density of 8 tag coordinates calculated when trilateration is performed 4 times is found by the clustering scheme.
+\textcolor{red}{When measuring the distance between anchor and tag indoors, there is an error in the distance. For example, if a tag is tracked with 4 anchors, an obstacle between the tag and the anchor may cause errors in more than 1 of the 4 anchors. The clustering scheme proposed in this paper can quickly remove these errors.} The system finds the region with the highest density of the eight computed coordinates. First, the distance is calculated by combining two coordinates. As shown in equation \ref{eq2}, there are 28 pairs of calculated distances. \textcolor{red}{The highest density of 8 tag coordinates calculated when trilateration is performed 4 times is found by the clustering scheme.}
 
 \begin{equation}
     \binom{8}{2} = \frac{8!}{(8-2)!2!}=28\label{eq2}
@@ -93,7 +93,7 @@ The tag's coordinate selection fails if all the selected coordinates have the sa
 \section{Experiments and Result}
 \subsection{The developed localization system}
 
-As shown in Fig. \ref{fig10}, 4 anchors, 1 tag, and 1 gateway are made to operate the real-time localization system. The developed equipment is made of UWB wireless module. The distance between the tag and the anchor is measured using two-way ranging (TWR).
+As shown in Fig. \ref{fig10}, 4 anchors, 1 tag, and 1 gateway are made to operate the real-time localization system. \textcolor{red}{The developed equipment is made of UWB wireless module. The distance between the tag and the anchor is measured using two-way ranging (TWR).}
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.62\columnwidth]{fig10.jpg}}
@@ -101,7 +101,7 @@ As shown in Fig. \ref{fig10}, 4 anchors, 1 tag, and 1 gateway are made to operat
     \label{fig10}
 \end{figure}
 
-As shown in Fig. \ref{fig5}, the developed localization scheme tracks the location of the tag when it receives a signal from the gateway. This scheme consists of top view, side view, front view and 3D image. Each screen displays the movement path of the tag in real-time. The 3D coordinates and speed of the moving tag are displayed in time series on the graph. The system can enable or disable the proposed clustering scheme and minimum distance method. This function evaluates the performance of the proposed algorithm.
+As shown in Fig. \ref{fig5}, the developed localization scheme tracks the location of the tag when it receives a signal from the gateway. This scheme consists of top view, side view, front view and 3D image. Each screen displays the movement path of the tag in real-time. \textcolor{red}{The 3D coordinates and speed of the moving tag are displayed in time series on the graph. The system can enable or disable the proposed clustering scheme and minimum distance method. This function evaluates the performance of the proposed algorithm.}
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.62\columnwidth]{fig5.png}}
@@ -109,7 +109,7 @@ As shown in Fig. \ref{fig5}, the developed localization scheme tracks the locati
     \label{fig5}
 \end{figure}
 
-As shown in Fig. \ref{fig6}, the moving process of the tag is monitored in real-time in 3D space. The x-y coordinates of the tag are shown in the top view, the y-z coordinates are shown in the side view, and the x-z coordinates are shown in the front view. The distance between the tag and the anchor is displayed as a 3D sphere. The error in the measured distance can be visually viewed using a 3D sphere.
+As shown in Fig. \ref{fig6}, the moving process of the tag is monitored in real-time in 3D space. \textcolor{red}{The x-y coordinates of the tag are shown in the top view, the y-z coordinates are shown in the side view, and the x-z coordinates are shown in the front view. The distance between the tag and the anchor is displayed as a 3D sphere. The error in the measured distance can be visually viewed using a 3D sphere.}
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.62\columnwidth]{fig6.png}}
@@ -117,7 +117,7 @@ As shown in Fig. \ref{fig6}, the moving process of the tag is monitored in real-
     \label{fig6}
 \end{figure}
 
-As shown in Fig. \ref{fig7}, the scheme shows the movement path record of the tag as a red line. The performance of the clustering scheme can be visually evaluated using the red line of the moving path of the tag. The performance of the clustering scheme can be visually evaluated using the red line of the moving path of the tag. Real-time red lines of moving tags appear in 2D and 3D views.
+As shown in Fig. \ref{fig7}, the scheme shows the movement path record of the tag as a red line. \textcolor{red}{The performance of the clustering scheme can be visually evaluated using the red line of the moving path of the tag. The performance of the clustering scheme can be visually evaluated using the red line of the moving path of the tag. Real-time red lines of moving tags appear in 2D and 3D views.}
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.62\columnwidth]{fig7.png}}
@@ -125,7 +125,7 @@ As shown in Fig. \ref{fig7}, the scheme shows the movement path record of the ta
     \label{fig7}
 \end{figure}
 
-As shown in Fig. \ref{fig8}, the scheme tracks the movement of tags in 3D space in real-time. In addition, the scheme can track the movement of the tag from various angles. 3D screen shows tag movement more intuitively than 2D screen from various angles.
+As shown in Fig. \ref{fig8}, the scheme tracks the movement of tags in 3D space in real-time. In addition, the scheme can track the movement of the tag from various angles. \textcolor{red}{3D screen shows tag movement more intuitively than 2D screen from various angles.}
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.62\columnwidth]{fig8.png}}
@@ -133,7 +133,7 @@ As shown in Fig. \ref{fig8}, the scheme tracks the movement of tags in 3D space 
     \label{fig8}
 \end{figure}
 
-As shown in Fig. \ref{fig9}, the tag's speed and position are displayed as graphs on each coordinate axis and are updated in real-time. The performance of the proposed clustering scheme can be visually evaluated using these graphs.
+As shown in Fig. \ref{fig9}, the tag's speed and position are displayed as graphs on each coordinate axis and are updated in real-time. \textcolor{red}{The performance of the proposed clustering scheme can be visually evaluated using these graphs.}
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.62\columnwidth]{fig9.png}}
@@ -141,8 +141,8 @@ As shown in Fig. \ref{fig9}, the tag's speed and position are displayed as graph
     \label{fig9}
 \end{figure}
 
-\subsection{Performance results of localization method}
-The performance evaluation of localization techniques is 1) when there is no evaluation method; 2) when only the clustering method is applied; 3) The clustering method and the minimum distance method were divided into three cases. As shown in Table \ref{tab1}, it was confirmed that the standard error of the clustering method and the minimum distance method was the smallest.
+\subsection{\textcolor{red}{Experimentation Results}}
+The performance evaluation of the localization method is divided into the case where there is no method, only the clustering method is applied, or the clustering method is combined with the minimum distance method. As shown in Table \ref{tab1}, the experiment combining the clustering method and the minimum distance method has the smallest standard error.
 
 \begin{table}[htbp]
     \caption{Performance results of localization scheme.}
@@ -173,11 +173,13 @@ This work was supported by the National Research Foundation of Korea (NRF) grant
     \bibitem{b1} Park, Jee Woong, Cho, Yong K., Martinez, Diego, "A BIM and UWB integrated Mobile Robot Navigation System for Indoor Position Tracking Applications," 6(2), pp.30-39, 2016.
     \bibitem{b2} J. Maneesilp, C. Wang, H. Wu and N. Tzeng, "RFID Support for Accurate 3D Localization," in IEEE Transactions on Computers, vol. 62, no. 7, doi: 10.1109/TC.2012.83, pp.1447-1459, July 2013.
     \bibitem{b3} M. Yoon, M. Kim and C. Lee, "A Dynamic Cell Clustering Algorithm for Maximization of Coordination Gain in Uplink Coordinated System," in IEEE Transactions on Vehicular Technology, vol. 65, no. 3, doi: 10.1109/TVT.2015.2413899, pp.1752-1760, March 2016.
+    \textcolor{red}{
     \bibitem{b4} Y. K. Cho and J. Youn, “Wireless Sensor-driven Intelligent Navigation Robots for Indoor Construction Site Security and Safety,” in 23rd ISARC, pp.493–498, 2006.
     \bibitem{b5} J. Park, Y. K. Cho, and C. Ahn, “Wireless Tracking System Integrated with BIM for Indoor Construction Applications,” in Proceedings of The 2016 Construction Research Congress (CRC), 2016.
     \bibitem{b6} F. Subhan, H. Hasbullah, and K. Ashraf, "Kalman filter-based hybrid indoor position estimation technique in bluetooth networks," Int. J. Navig. Obs. 2013.
     \bibitem{b7} K. Kim and Y. Cho, "BIM-Based Planning of Temporary Structures for Construction Safety," Comput. Civ. Eng. 2015.
-
+    \bibitem{b8} X. Guo, Z. Chen, X. Hu and X. Li, "Multi-Source Localization Using Time of Arrival Self-Clustering Method in Wireless Sensor Networks," in IEEE Access, vol. 7, pp. 82110-82121, 2019.
+    }
 \end{thebibliography}
 
 \end{document}
