@@ -14,12 +14,12 @@ The demand for indoor localization technology in the field of automation is grow
 - [x] 레퍼런스 3개면 너무 작으로 적어도 7개 정도는 확보 바랍니다.
 - [x] II. RELATED STUDIES 추가: 참고문헌에 있는 자료 중 본인의 논문에 관련된 가장 중요한 내용을 요약
 - [ ] Clustering method using the density of coordinates 부분이 제일 핵심인데, Fig. 2는 너무 단순한 개념에 대한 그림입니다. 기본적으로 제안하려는 scheme의 모델을 제시해야 합니다.
-- [ ] Figure 4의 설명이 거의 없는데 설명을 충분히 해주기 바랍니다.
-- [ ] 3.A. The developed localization system가 갑자기 등장하는데, 앞의 Introduction이나 어디에도 설명이 없으니 추가바랍니다
-- [ ] 3.B. Performance results of localization method -> Experimentation Results
-- [ ] Table I를 설명하면서 결과만 제시하였는데, 이 결과의 의미가 무엇인지를 충분히 설명바랍니다.
+- [x] Figure 4의 설명이 거의 없는데 설명을 충분히 해주기 바랍니다.
+- [x] 3.A. The developed localization system가 갑자기 등장하는데, 앞의 Introduction이나 어디에도 설명이 없으니 추가바랍니다
+- [x] 3.B. Performance results of localization method -> Experimentation Results
+- [x] Table I를 설명하면서 결과만 제시하였는데, 이 결과의 의미가 무엇인지를 충분히 설명바랍니다.
 - [x] 3.B. Performance results of localization method 에서 "The performance evaluation of localization techniques is 1) when there is no evaluation method; 2) when only the clustering method is applied; 3) The clustering method and the minimum distance method were divided into three cases."는 왜 있나요?
-- [ ] 그리고 영어내용에 문법적으로 맞지 않는 부분이 많습니다. 문장 하나하나 읽어보고 수정해야 합니다.
+- [x] 그리고 영어내용에 문법적으로 맞지 않는 부분이 많습니다. 문장 하나하나 읽어보고 수정해야 합니다.
 
 ## How to compile
 

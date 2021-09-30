@@ -38,14 +38,14 @@
 \end{IEEEkeywords}
 
 \section{Introduction}
-As labor costs become more expensive and industries become more complex, the number of skilled workers is being decreased. In this trend, automation technology has been playing an important role in the manufacturing industry for a long time\cite{b1}. Among automation technology, localization is a technology that is frequently required in the industrial environment. Wireless technology has become one of the indispensable technologies in modern life. It has deep applications in a variety of industries including localization using GPS\cite{b2}. While GPS is suitable for outdoor localization applications, it is not suitable indoors due to signal attenuation caused by building materials. Indoor localization technology has been studied using various technologies such as Wi-Fi, Bluetooth, RFID, UWB, infrared, and ultrasound\cite{b3}. However, it cannot provide GPS-level positioning performance. This is because most of the technologies used for indoor localization are greatly influenced by the indoor environment. Therefore, in this case, the measurement data will be erroneous. If these errors can be eliminated, localization performance can be improved. In [3], the location estimation accuracy was improved through the clustering scheme of the measured coordinate density\cite{b4}. In this paper, we propose a real-time clustering scheme using the measured coordinate density for 3D localization. To this end, first, a multi-triangulation method using radio anchors and tags is introduced\cite{b5}. Next, a clustering scheme and a minimum distance method are proposed to remove the error of the measurement coordinates, and the performance of the proposed scheme is evaluated through experiments\cite{b6}. Finally, conclusions and future research contents are summarized\cite{b7}.
+As labor costs become more expensive and industries become more complex, the number of skilled workers is being decreased. In this trend, automation technology has been playing an important role in the manufacturing industry for a long time\cite{b1}. Among automation technology, localization is a technology that is frequently required in the industrial environment. Wireless technology has become one of the indispensable technologies in modern life. It has deep applications in a variety of industries including localization using GPS\cite{b2}. While GPS is suitable for outdoor localization applications, it is not suitable indoors due to signal attenuation caused by building materials. Indoor localization technology has been studied using various technologies such as Wi-Fi, Bluetooth, RFID, UWB, infrared, and ultrasound\cite{b3}. However, it cannot provide GPS-level positioning performance. This is because most of the technologies used for indoor localization are greatly influenced by the indoor environment. Therefore, in this case, the measurement data will be erroneous. If these errors can be eliminated, localization performance can be improved. In [3], the location estimation accuracy was improved through the clustering scheme of the measured coordinate density\cite{b4}. In this paper, we propose a real-time clustering scheme using the measured coordinate density for 3D localization. \textcolor{red}{The developed localization system consists of clustering and minimum distance techniques. The clustering technique uses four anchors to isolate the coordinates of the calculated tag. The separated regions calculate their density using the number of coordinates of the tag in the area. If the density of the calculated area is the same, use the minimum distance technique to select an area with a higher weight of density. The mean of the coordinates of the tag of the selected area becomes the final coordinate of the tag.} To this end, first, a multi-triangulation method using radio anchors and tags is introduced\cite{b5}. Next, a clustering scheme and a minimum distance method are proposed to remove the error of the measurement coordinates, and the performance of the proposed scheme is evaluated through experiments\cite{b6}. Finally, conclusions and future research contents are summarized.
 
 \section{System Architecture}
 
 \subsection{Multiple trilateration using four anchors}
-\textcolor{red}{Trilateration requires at least three anchors. If any of the three anchors fail, localization will fail. There are several causes of anchor errors. For example, anchor failures occur when an obstacle is between the tag and the anchor, or when the anchor's power supply is faulty. These errors often occur indoors with many obstacles. The more frequently these errors occur, the more unstable the localization becomes.
+\textcolor{red}{Trilateration requires at least three anchors. If any of the three anchors fail, localization will fail. There are several causes of anchor errors. For example, anchor failures occur when an obstacle is between the tag and the anchor, or when the anchor's power supply is faulty. These errors often occur indoors with many obstacles. The more frequently these errors occur, the more unstable the localization becomes\cite{b7}.
 Localization failure can be improved by adding one anchor.
-Even if a problem occurs in any one anchor, the probability of performing localization increases.}
+Even if a problem occurs in any one anchor, the probability of performing localization increases\cite{b8}.}
 
 The proposed scheme collects the coordinates of each anchor node and the distance value between tag nodes. The system uses triangulation to calculate the coordinates of the tag node. Fig. As shown in Fig. \ref{fig1}, there are two coordinates that can be obtained through trilateration using three spheres. Since the number of anchor nodes is 4 (reference, Fig. \ref{fig2}), as shown in the equation \ref{eq1}, the number of coordinates that can be collected is 8.
 
@@ -54,13 +54,13 @@ The proposed scheme collects the coordinates of each anchor node and the distanc
 \end{equation}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig2.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig2.png}}
     \caption{Calculation of 3D location coordinates based on 3 sphere equations.}
     \label{fig1}
 \end{figure}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig1.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig1.png}}
     \caption{Coordinates calculation of tag node using 4 anchor nodes.}
     \label{fig2}
 \end{figure}
@@ -77,15 +77,16 @@ The proposed scheme collects the coordinates of each anchor node and the distanc
 As shown in Fig. \ref{fig3}, the system applies the clustering method to determine the coordinates of the tag nodes, and then selects pairs whose coordinates are within a limited range (eg, 1m). The system selects the region with the most connected nodes among the selected coordinates. Finally, one coordinate of the tag is determined by averaging the selected coordinates.
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig3.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig3.png}}
     \caption{Clustering method using the density of coordinates.}
     \label{fig3}
 \end{figure}
 
-The tag's coordinate selection fails if all the selected coordinates have the same density. In this case, as shown in Fig. \ref{fig4}, one coordinate of the tag is determined as the average of the coordinate set of the minimum distance.
+The tag's coordinate selection fails if all the selected coordinates have the same density. In this case, as shown in Fig. \ref{fig4}, one coordinate of the tag is determined as the average of the coordinate set of the minimum distance. \textcolor{red}{For example, if there are four clustering regions and each density is [4, 4, 2, 3], the density 1 and 2 is the same, so the coordinates of the tag become two. In this case, the algorithm uses a minimum distance technique to select areas with higher weights of density and average coordinates.}
+
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig4.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig4.png}}
     \caption{Minimum distance method on same density of coordinates.}
     \label{fig4}
 \end{figure}
@@ -96,7 +97,7 @@ The tag's coordinate selection fails if all the selected coordinates have the sa
 As shown in Fig. \ref{fig10}, 4 anchors, 1 tag, and 1 gateway are made to operate the real-time localization system. \textcolor{red}{The developed equipment is made of UWB wireless module. The distance between the tag and the anchor is measured using two-way ranging (TWR).}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig10.jpg}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig10.jpg}}
     \caption{Hardware for 3D localization system.}
     \label{fig10}
 \end{figure}
@@ -104,7 +105,7 @@ As shown in Fig. \ref{fig10}, 4 anchors, 1 tag, and 1 gateway are made to operat
 As shown in Fig. \ref{fig5}, the developed localization scheme tracks the location of the tag when it receives a signal from the gateway. This scheme consists of top view, side view, front view and 3D image. Each screen displays the movement path of the tag in real-time. \textcolor{red}{The 3D coordinates and speed of the moving tag are displayed in time series on the graph. The system can enable or disable the proposed clustering scheme and minimum distance method. This function evaluates the performance of the proposed algorithm.}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig5.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig5.png}}
     \caption{The developed localization system.}
     \label{fig5}
 \end{figure}
@@ -112,7 +113,7 @@ As shown in Fig. \ref{fig5}, the developed localization scheme tracks the locati
 As shown in Fig. \ref{fig6}, the moving process of the tag is monitored in real-time in 3D space. \textcolor{red}{The x-y coordinates of the tag are shown in the top view, the y-z coordinates are shown in the side view, and the x-z coordinates are shown in the front view. The distance between the tag and the anchor is displayed as a 3D sphere. The error in the measured distance can be visually viewed using a 3D sphere.}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig6.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig6.png}}
     \caption{Real time monitoring viewer.}
     \label{fig6}
 \end{figure}
@@ -120,7 +121,7 @@ As shown in Fig. \ref{fig6}, the moving process of the tag is monitored in real-
 As shown in Fig. \ref{fig7}, the scheme shows the movement path record of the tag as a red line. \textcolor{red}{The performance of the clustering scheme can be visually evaluated using the red line of the moving path of the tag. The performance of the clustering scheme can be visually evaluated using the red line of the moving path of the tag. Real-time red lines of moving tags appear in 2D and 3D views.}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig7.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig7.png}}
     \caption{The movement path record of the tag.}
     \label{fig7}
 \end{figure}
@@ -128,7 +129,7 @@ As shown in Fig. \ref{fig7}, the scheme shows the movement path record of the ta
 As shown in Fig. \ref{fig8}, the scheme tracks the movement of tags in 3D space in real-time. In addition, the scheme can track the movement of the tag from various angles. \textcolor{red}{3D screen shows tag movement more intuitively than 2D screen from various angles.}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig8.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig8.png}}
     \caption{3D localization from various angles.}
     \label{fig8}
 \end{figure}
@@ -136,13 +137,13 @@ As shown in Fig. \ref{fig8}, the scheme tracks the movement of tags in 3D space 
 As shown in Fig. \ref{fig9}, the tag's speed and position are displayed as graphs on each coordinate axis and are updated in real-time. \textcolor{red}{The performance of the proposed clustering scheme can be visually evaluated using these graphs.}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.62\columnwidth]{fig9.png}}
+    \centerline{\includegraphics[width=0.8\columnwidth]{fig9.png}}
     \caption{Real-time speed and position graphs of tags.}
     \label{fig9}
 \end{figure}
 
 \subsection{\textcolor{red}{Experimentation Results}}
-The performance evaluation of the localization method is divided into the case where there is no method, only the clustering method is applied, or the clustering method is combined with the minimum distance method. As shown in Table \ref{tab1}, the experiment combining the clustering method and the minimum distance method has the smallest standard error.
+The performance evaluation of the localization method is divided into the case where there is no method, only the clustering method is applied, or the clustering method is combined with the minimum distance method. As shown in Table \ref{tab1}, the experiment combining the clustering method and the minimum distance method has the smallest standard error. \textcolor{red}{The results of experiments using the developed localization system show that the localization algorithm proposed in this paper is capable of more precise localization than a simple trilateration method.}
 
 \begin{table}[htbp]
     \caption{Performance results of localization scheme.}
