@@ -11,7 +11,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{A Real-time Clustering Scheme using Coordinate Density for 3D Localization\\
+\title{A Real-time Clustering Scheme using Coordinate Density for 3D Indoor Localization\\
     \thanks{}}
 
 \author{\IEEEauthorblockN{\textsuperscript{} Ho Chul Lee}
@@ -38,14 +38,26 @@
 \end{IEEEkeywords}
 
 \section{Introduction}
-As labor costs become more expensive and industries become more complex, the number of skilled workers is being decreased. In this trend, automation technology has been playing an important role in the manufacturing industry for a long time\cite{b1}. Among automation technology, localization is a technology that is frequently required in the industrial environment. Wireless technology has become one of the indispensable technologies in modern life. It has deep applications in a variety of industries including localization using GPS\cite{b2}. While GPS is suitable for outdoor localization applications, it is not suitable indoors due to signal attenuation caused by building materials. Indoor localization technology has been studied using various technologies such as Wi-Fi, Bluetooth, RFID, UWB, infrared, and ultrasound\cite{b3}. However, it cannot provide GPS-level positioning performance. This is because most of the technologies used for indoor localization are greatly influenced by the indoor environment. Therefore, in this case, the measurement data will be erroneous. If these errors can be eliminated, localization performance can be improved. In [3], the location estimation accuracy was improved through the clustering scheme of the measured coordinate density\cite{b4}. In this paper, we propose a real-time clustering scheme using the measured coordinate density for 3D localization. \textcolor{red}{The developed localization system consists of clustering and minimum distance techniques. The clustering technique uses four anchors to isolate the coordinates of the calculated tag. The separated regions calculate their density using the number of coordinates of the tag in the area. If the density of the calculated area is the same, use the minimum distance technique to select an area with a higher weight of density. The mean of the coordinates of the tag of the selected area becomes the final coordinate of the tag.} To this end, first, a multi-triangulation method using radio anchors and tags is introduced\cite{b5}. Next, a clustering scheme and a minimum distance method are proposed to remove the error of the measurement coordinates, and the performance of the proposed scheme is evaluated through experiments\cite{b6}. Finally, conclusions and future research contents are summarized.
+As labor costs become more expensive and industries become more complex, the number of skilled workers is shrinking. In this trend, automation has long played an important role in manufacturing \cite{b1}. Among the technologies that implement automation, positioning is a technology that has many applications in the industrial field. Outdoor positioning technology is applied in various industrial fields using global positioning system (GPS)\cite{b2}.
+
+However, since GPS signals cannot be used indoors for indoor positioning, various technologies such as Wi-Fi, Bluetooth, RFID, UWB, infrared and ultrasonic are utilized [3]. However, in this case, it is impossible to provide positioning performance at the GPS level.
+
+In the case of indoor positioning, errors occur in measurement data because most of them are greatly influenced by the indoor environment. If these errors can be eliminated, indoor positioning performance can be improved. According to [4], it can be confirmed that the positioning accuracy is improved through the clustering technique of the measured coordinate density.
+
+In this paper, we propose a real-time clustering scheme using measured coordinate density for 3D indoor localization. In addition, for the performance test of the proposed real-time clustering scheme, an indoor positioning performance test bed was developed and constructed. The proposed real-time clustering scheme consists of a clustering scheme concept and a minimum distance algorithm. The clustering scheme uses four anchors to separate the calculated coordinates of the tag. Then, the density of the isolated area is calculated using the number of tag coordinates in the area. If the calculated regions have the same density, the minimum distance algorithm is used to select the region with the higher density weight. Therefore, the average of the tag coordinate values of the selected area becomes the final coordinate of the tag.
+
+In this paper, we first introduce the multi-trilateration method using radio anchors and tags, and then we propose a clustering scheme and a minimum distance algorithm to remove the error of the measurement coordinates. Then, the performance of the proposed real-time clustering scheme is evaluated through experiments using the developed and built performance test bed. Finally, conclusions and future research are summarized.
+
+
+\section{Defined Problem in 3D Indoor Localization}
+
+\textcolor{red}{Trilateration requires at least three anchors. If any of the three anchors fail, localization will fail. There are several causes of anchor errors. For example, anchor failures occur when an obstacle is between the tag and the anchor, or when the anchor's power supply is faulty. These errors often occur indoors with many obstacles. The more frequently these errors occur, the more unstable the localization becomes\cite{b7}.
+    Localization failure can be improved by adding one anchor.
+    Even if a problem occurs in any one anchor, the probability of performing localization increases\cite{b8}.}
 
 \section{System Architecture}
 
 \subsection{Multiple trilateration using four anchors}
-\textcolor{red}{Trilateration requires at least three anchors. If any of the three anchors fail, localization will fail. There are several causes of anchor errors. For example, anchor failures occur when an obstacle is between the tag and the anchor, or when the anchor's power supply is faulty. These errors often occur indoors with many obstacles. The more frequently these errors occur, the more unstable the localization becomes\cite{b7}.
-Localization failure can be improved by adding one anchor.
-Even if a problem occurs in any one anchor, the probability of performing localization increases\cite{b8}.}
 
 The proposed scheme collects the coordinates of each anchor node and the distance value between tag nodes. The system uses triangulation to calculate the coordinates of the tag node. Fig. As shown in Fig. \ref{fig1}, there are two coordinates that can be obtained through trilateration using three spheres. Since the number of anchor nodes is 4 (reference, Fig. \ref{fig2}), as shown in the equation \ref{eq1}, the number of coordinates that can be collected is 8.
 
@@ -65,7 +77,7 @@ The proposed scheme collects the coordinates of each anchor node and the distanc
     \label{fig2}
 \end{figure}
 
-\subsection{Clustering method using the density of coordinates}
+\subsection{Clustering scheme using the density of coordinates}
 \textcolor{red}{Trilateration using 4 anchors gets multiple tag coordinates. However, as shown in Fig. \ref{fig1}, one of the two coordinates is far from the actual tag location. Therefore, if the clustering method using the density of coordinates proposed in this paper is used, it is possible to remove the coordinates of the tag that are far from the actual location of the tag. After that, the system can use the coordinates closest to the actual position of the tag to improve the accuracy of localization.}
 
 \textcolor{red}{When measuring the distance between anchor and tag indoors, there is an error in the distance. For example, if a tag is tracked with 4 anchors, an obstacle between the tag and the anchor may cause errors in more than 1 of the 4 anchors. The clustering scheme proposed in this paper can quickly remove these errors.} The system finds the region with the highest density of the eight computed coordinates. First, the distance is calculated by combining two coordinates. As shown in equation \ref{eq2}, there are 28 pairs of calculated distances. \textcolor{red}{The highest density of 8 tag coordinates calculated when trilateration is performed 4 times is found by the clustering scheme.}
@@ -86,7 +98,7 @@ The tag's coordinate selection fails if all the selected coordinates have the sa
 
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.8\columnwidth]{fig4.png}}
+    \centerline{\includegraphics[width=0.5\columnwidth]{fig4.png}}
     \caption{Minimum distance method on same density of coordinates.}
     \label{fig4}
 \end{figure}
@@ -168,6 +180,7 @@ In this paper, a real-time clustering scheme is proposed to improve the localiza
 \section*{Acknowledgment}
 
 This research was supported by the BB21plus funded by Busan Metropolitan City and Busan Institute for Talent \& Lifelong Education (BIT).
+
 This work was supported by the National Research Foundation of Korea (NRF) grant funded by the Korea government (MSIT) (No. 2019R1F1A1062670).
 
 \begin{thebibliography}{00}
@@ -175,11 +188,11 @@ This work was supported by the National Research Foundation of Korea (NRF) grant
     \bibitem{b2} J. Maneesilp, C. Wang, H. Wu and N. Tzeng, "RFID Support for Accurate 3D Localization," in IEEE Transactions on Computers, vol. 62, no. 7, doi: 10.1109/TC.2012.83, pp.1447-1459, July 2013.
     \bibitem{b3} M. Yoon, M. Kim and C. Lee, "A Dynamic Cell Clustering Algorithm for Maximization of Coordination Gain in Uplink Coordinated System," in IEEE Transactions on Vehicular Technology, vol. 65, no. 3, doi: 10.1109/TVT.2015.2413899, pp.1752-1760, March 2016.
     \textcolor{red}{
-    \bibitem{b4} Y. K. Cho and J. Youn, “Wireless Sensor-driven Intelligent Navigation Robots for Indoor Construction Site Security and Safety,” in 23rd ISARC, pp.493–498, 2006.
-    \bibitem{b5} J. Park, Y. K. Cho, and C. Ahn, “Wireless Tracking System Integrated with BIM for Indoor Construction Applications,” in Proceedings of The 2016 Construction Research Congress (CRC), 2016.
-    \bibitem{b6} F. Subhan, H. Hasbullah, and K. Ashraf, "Kalman filter-based hybrid indoor position estimation technique in bluetooth networks," Int. J. Navig. Obs. 2013.
-    \bibitem{b7} K. Kim and Y. Cho, "BIM-Based Planning of Temporary Structures for Construction Safety," Comput. Civ. Eng. 2015.
-    \bibitem{b8} X. Guo, Z. Chen, X. Hu and X. Li, "Multi-Source Localization Using Time of Arrival Self-Clustering Method in Wireless Sensor Networks," in IEEE Access, vol. 7, pp. 82110-82121, 2019.
+        \bibitem{b4} Y. K. Cho and J. Youn, “Wireless Sensor-driven Intelligent Navigation Robots for Indoor Construction Site Security and Safety,” in 23rd ISARC, pp.493–498, 2006.
+        \bibitem{b5} J. Park, Y. K. Cho, and C. Ahn, “Wireless Tracking System Integrated with BIM for Indoor Construction Applications,” in Proceedings of The 2016 Construction Research Congress (CRC), 2016.
+        \bibitem{b6} F. Subhan, H. Hasbullah, and K. Ashraf, "Kalman filter-based hybrid indoor position estimation technique in bluetooth networks," Int. J. Navig. Obs. 2013.
+        \bibitem{b7} K. Kim and Y. Cho, "BIM-Based Planning of Temporary Structures for Construction Safety," Comput. Civ. Eng. 2015.
+        \bibitem{b8} X. Guo, Z. Chen, X. Hu and X. Li, "Multi-Source Localization Using Time of Arrival Self-Clustering Method in Wireless Sensor Networks," in IEEE Access, vol. 7, pp. 82110-82121, 2019.
     }
 \end{thebibliography}
 
